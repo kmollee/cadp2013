@@ -36,7 +36,7 @@ class HelloWorld(object):
     'tools.sessions.timeout' : 60,
     # 以下透過  @cherrypy.tools.mako(filename="mytmpl.txt") decorator 設定的套稿目錄依據
     # javascript 檔案位於 templates/jscript 目錄下, css 檔案則位於 templates/style 目錄下
-    'tools.mako.directories' :  template_root_dir
+    'tools.mako.directories' :  template_root_dir + "/templates"
     }
 
     @cherrypy.expose
@@ -48,12 +48,15 @@ class HelloWorld(object):
         return 內建頁面.render(stud_number=stud_number, stud_name=stud_name)
 
     @cherrypy.expose
-    def example(self, temp='example'):
+    def example(self, category='cadp',temp='example'):
         #return "Hello World!"
         套稿查詢 = TemplateLookup(directories=[template_root_dir+"/templates"])
         # 必須要從 templates 目錄取出 index.html
-        內建頁面 = 套稿查詢.get_template(temp + '.html')
-        return 內建頁面.render(temp=temp)
+        #內建頁面 = 套稿查詢.get_template(category +'/'+ temp + '.html')
+        #內建頁面 = 套稿查詢.get_template(category+ '/' +temp + '.html')
+        內建頁面 = 套稿查詢.get_template('/'+ category + '/' + temp + '.html')
+        #內建頁面 = 套稿查詢.get_template('/ia/test.html')
+        return 內建頁面.render(category = category, temp = temp)
 
 
 

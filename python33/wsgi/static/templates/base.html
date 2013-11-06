@@ -1,0 +1,71 @@
+##encoding: utf-8
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		<%block name="title">
+			this is title
+    	</%block>
+	</title>
+
+	<%block name="extra_head">
+    </%block>
+
+	<link rel="stylesheet" href="templates/style/viewpart.css" type="text/css">
+	<style type="text/css">
+		body{
+		    font-family: 'Georgia', serif;
+		    color:#3E4349;
+		}
+
+		li{
+		    color: green;
+		}
+		h1{
+		    color:  red;
+		    font-size: 18px;
+		}
+		div#nav {
+		    position: absolute;
+		    top: 20px;
+		    left: 5px;
+		    width: 10em;
+		}
+
+		hr#nav {
+		    width:100px;
+		    margin-left:0;
+		}
+
+		div#flashed {
+		    margin-left: 10em;
+		    font-size: large;
+		}
+
+		#content {
+		    margin-left: 10em;
+		}
+	</style>
+
+	<%block name="extra_js">
+    </%block>
+
+</head>
+<body>
+
+	##側邊 導航
+	<div id="nav">
+		<p>mid example</p>
+		<%block name="nav">
+        </%block>
+        <br />
+        <a href="/">back to home</a>
+	</div>
+
+	##內容
+	<div id="content">
+		<%block name="content">
+        </%block>
+	</div>
+</body>
+</html>
